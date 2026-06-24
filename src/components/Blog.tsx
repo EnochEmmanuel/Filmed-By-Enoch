@@ -161,6 +161,7 @@ export default function Blog() {
                 <img 
                   src={featuredArticle.thumbnailUrl} 
                   alt={featuredArticle.title}
+                  loading="lazy"
                   referrerPolicy="no-referrer"
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-102 opacity-75 dark:opacity-60"
                 />
@@ -219,6 +220,7 @@ export default function Blog() {
                   <img 
                     src={article.thumbnailUrl} 
                     alt={article.title}
+                    loading="lazy"
                     referrerPolicy="no-referrer"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-102 opacity-75 dark:opacity-60"
                   />

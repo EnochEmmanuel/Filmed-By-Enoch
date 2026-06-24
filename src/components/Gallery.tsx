@@ -86,6 +86,7 @@ export default function Gallery({ onPlayVideo }: GalleryProps) {
                   <img
                     src={work.thumbnailUrl}
                     alt={work.title}
+                    loading="lazy"
                     referrerPolicy="no-referrer"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-102"
                   />

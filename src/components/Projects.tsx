@@ -70,6 +70,7 @@ export default function Projects({ onPlayVideo }: ProjectsProps) {
                       <img
                         src={project.bannerImage}
                         alt={project.brandName}
+                        loading="lazy"
                         referrerPolicy="no-referrer"
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-102"
                       />
@@ -151,6 +152,7 @@ export default function Projects({ onPlayVideo }: ProjectsProps) {
                 <img
                   src={currentProject?.bannerImage}
                   alt={currentProject?.brandName}
+                  loading="lazy"
                   referrerPolicy="no-referrer"
                   className="h-full w-full object-cover opacity-75 dark:opacity-60 transition-opacity"
                 />
