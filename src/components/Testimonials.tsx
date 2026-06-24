@@ -52,9 +52,9 @@ export default function Testimonials() {
   const current = TESTIMONIALS[activeIndex];
 
   return (
-    <section className="bg-[#050505] px-6 py-24 text-[#F5F5F5] border-b border-white/5 font-sans relative overflow-hidden" id="testimonials-section">
+    <section className="bg-bg-primary px-6 py-24 text-text-primary border-b border-border-custom font-sans relative overflow-hidden transition-colors duration-300" id="testimonials-section">
       {/* Absolute faint quotes background element */}
-      <div className="absolute right-10 bottom-6 select-none opacity-[0.02] pointer-events-none hidden lg:block">
+      <div className="absolute right-10 bottom-6 select-none opacity-[0.02] pointer-events-none hidden lg:block text-text-primary">
         <Quote className="h-96 w-96 font-serif scale-[-1]" />
       </div>
 
@@ -62,23 +62,23 @@ export default function Testimonials() {
         
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-white/40 font-bold mb-2 block">
+          <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-text-muted font-bold mb-2 block">
             06 / CLIENT RESONANCE
           </span>
-          <h2 className="text-3xl md:text-5xl font-light tracking-tight text-white uppercase">
-            VERIFIED <span className="italic font-serif text-white/40">FEEDBACK</span>
+          <h2 className="text-3xl md:text-5xl font-black tracking-tight text-text-primary uppercase font-display">
+            VERIFIED <span className="italic font-serif font-normal text-text-muted">FEEDBACK</span>
           </h2>
-          <p className="text-white/40 text-xs sm:text-sm mt-4 uppercase tracking-wide max-w-xl mx-auto">
+          <p className="text-text-muted text-xs sm:text-sm mt-4 uppercase tracking-wide max-w-xl mx-auto font-mono">
             Quotes and retrospective reviews from creative founders and brand managers who partnered with Enoch.
           </p>
         </div>
 
         {/* Dynamic Interactive Slider Frame */}
-        <div className="relative bg-[#111] border border-white/5 rounded-sm p-8 sm:p-12 md:p-16 min-h-[350px] flex flex-col justify-between" id="testimonials-carousel">
+        <div className="relative bg-bg-card border border-border-custom rounded-3xl p-8 sm:p-12 md:p-16 min-h-[350px] flex flex-col justify-between shadow-sm" id="testimonials-carousel">
           
           {/* Slider Content with cross-fade animation */}
           <div className="relative">
-            <Quote className="h-8 w-8 text-white/10 mb-6" />
+            <Quote className="h-8 w-8 text-text-muted opacity-30 mb-6" />
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -92,31 +92,31 @@ export default function Testimonials() {
                 {/* Five star rating accent */}
                 <div className="flex items-center gap-1">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-3 w-3 fill-white/40 text-transparent" />
+                    <Star key={i} className="h-3 w-3 fill-accent-custom text-accent-custom" />
                   ))}
-                  <span className="text-[9px] font-mono tracking-widest text-[#F5F5F5]/40 ml-2 uppercase font-semibold">
+                  <span className="text-[9px] font-mono tracking-widest text-text-muted ml-2 uppercase font-bold">
                     PROJECT EXCELLENT RECORD
                   </span>
                 </div>
 
                 {/* Big Quote */}
-                <p className="text-lg sm:text-2xl font-light leading-relaxed text-white font-serif italic">
+                <p className="text-lg sm:text-2xl font-normal leading-relaxed text-text-primary font-serif italic">
                   "{current.quote}"
                 </p>
 
                 {/* Client info and project label */}
-                <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div className="pt-8 border-t border-border-custom flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                   <div>
-                    <h4 className="text-sm font-semibold text-white tracking-wide uppercase">
+                    <h4 className="text-sm font-black text-text-primary tracking-wide uppercase font-display">
                       {current.author}
                     </h4>
-                    <p className="text-xs text-white/40 font-sans mt-0.5">
-                      {current.title} — <span className="text-white/60 font-medium">{current.company}</span>
+                    <p className="text-xs text-text-muted font-sans mt-0.5">
+                      {current.title} — <span className="text-text-secondary font-bold">{current.company}</span>
                     </p>
                   </div>
 
                   <div>
-                    <span className="inline-block rounded-sm bg-white/5 border border-white/10 px-3 py-1 text-[9px] font-mono tracking-widest text-white/50 font-semibold uppercase">
+                    <span className="inline-block rounded-full bg-bg-secondary border border-border-strong px-4 py-1.5 text-[9px] font-bold tracking-widest text-text-secondary uppercase">
                       {current.projectScope}
                     </span>
                   </div>
@@ -126,7 +126,7 @@ export default function Testimonials() {
           </div>
 
           {/* Controls bar */}
-          <div className="mt-12 pt-8 border-t border-white/5 flex items-center justify-between">
+          <div className="mt-12 pt-8 border-t border-border-custom flex items-center justify-between">
             {/* Status indicators */}
             <div className="flex items-center gap-2">
               {TESTIMONIALS.map((t, idx) => (
@@ -134,7 +134,7 @@ export default function Testimonials() {
                   key={t.id}
                   onClick={() => setActiveIndex(idx)}
                   className={`h-1.5 transition-all duration-300 rounded-full cursor-pointer ${
-                    activeIndex === idx ? "w-8 bg-white" : "w-2 bg-white/20"
+                    activeIndex === idx ? "w-8 bg-accent-custom" : "w-2 bg-text-primary/20"
                   }`}
                   aria-label={`Go to slide ${idx + 1}`}
                   id={`testimonial-dot-${idx}`}
@@ -146,7 +146,7 @@ export default function Testimonials() {
             <div className="flex items-center gap-2">
               <button
                 onClick={handlePrev}
-                className="h-10 w-10 rounded-sm bg-white/5 hover:bg-white/10 text-white border border-white/10 flex items-center justify-center transition cursor-pointer"
+                className="h-10 w-10 rounded-full bg-bg-secondary hover:bg-text-primary hover:text-bg-primary text-text-primary border border-border-strong flex items-center justify-center transition cursor-pointer"
                 id="testimonial-prev-ctr"
                 aria-label="Previous feedback"
               >
@@ -154,7 +154,7 @@ export default function Testimonials() {
               </button>
               <button
                 onClick={handleNext}
-                className="h-10 w-10 rounded-sm bg-white/5 hover:bg-white/10 text-white border border-white/10 flex items-center justify-center transition cursor-pointer"
+                className="h-10 w-10 rounded-full bg-bg-secondary hover:bg-text-primary hover:text-bg-primary text-text-primary border border-border-strong flex items-center justify-center transition cursor-pointer"
                 id="testimonial-next-ctr"
                 aria-label="Next feedback"
               >
@@ -167,21 +167,21 @@ export default function Testimonials() {
 
         {/* Testimonials mini overview metrics */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12" id="testimonial-stats-row">
-          <div className="bg-[#111] border border-white/5 p-5 text-center rounded-sm">
-            <span className="text-[9px] font-mono text-white/40 block uppercase tracking-widest">Global Reach</span>
-            <span className="text-2xl font-light text-white block mt-1 uppercase">100% REMOTE</span>
+          <div className="bg-bg-card border border-border-custom p-5 text-center rounded-2xl shadow-sm hover:border-text-primary/20 transition-colors">
+            <span className="text-[9px] font-mono text-text-muted block uppercase tracking-widest font-bold">Global Reach</span>
+            <span className="text-xl font-black text-text-primary block mt-1 uppercase font-display">100% REMOTE</span>
           </div>
-          <div className="bg-[#111] border border-white/5 p-5 text-center rounded-sm">
-            <span className="text-[9px] font-mono text-white/40 block uppercase tracking-widest">Average Turnaround</span>
-            <span className="text-2xl font-light text-white block mt-1 uppercase">48 HOURS</span>
+          <div className="bg-bg-card border border-border-custom p-5 text-center rounded-2xl shadow-sm hover:border-text-primary/20 transition-colors">
+            <span className="text-[9px] font-mono text-text-muted block uppercase tracking-widest font-bold">Average Turnaround</span>
+            <span className="text-xl font-black text-text-primary block mt-1 uppercase font-display">48 HOURS</span>
           </div>
-          <div className="bg-[#111] border border-white/5 p-5 text-center rounded-sm">
-            <span className="text-[9px] font-mono text-white/40 block uppercase tracking-widest">Completed Campaigns</span>
-            <span className="text-2xl font-light text-white block mt-1 uppercase">40+ BRANDS</span>
+          <div className="bg-bg-card border border-border-custom p-5 text-center rounded-2xl shadow-sm hover:border-text-primary/20 transition-colors">
+            <span className="text-[9px] font-mono text-text-muted block uppercase tracking-widest font-bold">Completed Campaigns</span>
+            <span className="text-xl font-black text-text-primary block mt-1 uppercase font-display">40+ BRANDS</span>
           </div>
-          <div className="bg-[#111] border border-white/5 p-5 text-center rounded-sm">
-            <span className="text-[9px] font-mono text-white/40 block uppercase tracking-widest">Client Return Rate</span>
-            <span className="text-2xl font-light text-white block mt-1 uppercase">94% LOYALTY</span>
+          <div className="bg-bg-card border border-border-custom p-5 text-center rounded-2xl shadow-sm hover:border-text-primary/20 transition-colors">
+            <span className="text-[9px] font-mono text-text-muted block uppercase tracking-widest font-bold">Client Return Rate</span>
+            <span className="text-xl font-black text-text-primary block mt-1 uppercase font-display">94% LOYALTY</span>
           </div>
         </div>
 

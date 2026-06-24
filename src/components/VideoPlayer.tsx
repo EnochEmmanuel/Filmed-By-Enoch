@@ -92,7 +92,7 @@ export default function VideoPlayer({
           animate={{ scale: 1, y: 0 }}
           exit={{ scale: 0.98, y: 15 }}
           transition={{ type: "spring", damping: 25, stiffness: 180 }}
-          className={`relative z-10 w-full overflow-hidden rounded-sm bg-[#111] border border-white/10 shadow-2xl ${
+          className={`relative z-10 w-full overflow-hidden rounded-2xl bg-bg-card border border-border-custom shadow-2xl ${
             aspectRatio === "portrait" ? "max-w-md aspect-[9/16]" : "max-w-4xl aspect-video"
           }`}
           id="cinema-content-frame"
@@ -100,12 +100,12 @@ export default function VideoPlayer({
           {/* Video Title Header */}
           <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between bg-gradient-to-b from-black/80 to-transparent p-4 text-white">
             <div className="flex flex-col text-left">
-              <span className="text-[9px] tracking-widest text-white/30 font-mono">CINEMATIC PREVIEW</span>
-              <h4 className="text-xs font-semibold tracking-wide font-sans text-white/80">{title}</h4>
+              <span className="text-[9px] tracking-widest text-white/50 font-mono font-bold">CINEMATIC PREVIEW</span>
+              <h4 className="text-xs font-bold tracking-wide font-sans text-white/95">{title}</h4>
             </div>
             <button
               onClick={onClose}
-              className="rounded-sm p-1.5 bg-white/5 hover:bg-white/10 text-white transition-all border border-white/10 cursor-pointer"
+              className="rounded-full p-2 bg-black/80 hover:bg-black/90 text-white transition-all border border-white/10 cursor-pointer"
               aria-label="Close video player"
               id="player-close-btn"
             >
@@ -115,9 +115,9 @@ export default function VideoPlayer({
 
           {/* Loader */}
           {isLoading && (
-            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-[#050505]">
-              <RefreshCw className="h-6 w-6 text-white/40 animate-spin mb-2" />
-              <p className="text-white/40 text-[9px] font-mono tracking-widest uppercase">STREAMING ACTIVE...</p>
+            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-bg-primary">
+              <RefreshCw className="h-6 w-6 text-accent-custom animate-spin mb-2" />
+              <p className="text-text-muted text-[9px] font-mono tracking-widest uppercase font-bold">STREAMING ACTIVE...</p>
             </div>
           )}
 
@@ -140,14 +140,14 @@ export default function VideoPlayer({
             {/* Direct Slider Progress */}
             <div
               onClick={handleProgressClick}
-              className="h-1 w-full bg-white/10 rounded-sm cursor-pointer overflow-hidden relative group"
+              className="h-1 w-full bg-white/20 rounded-full cursor-pointer overflow-hidden relative group"
               id="progress-track"
             >
               <div
-                className="h-full bg-white/70 rounded-sm transition-all duration-75 relative"
+                className="h-full bg-accent-custom rounded-full transition-all duration-75 relative"
                 style={{ width: `${duration ? (currentTime / duration) * 100 : 0}%` }}
               >
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 h-2.5 w-2.5 bg-white rounded-sm opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 h-2.5 w-2.5 bg-accent-custom rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
             </div>
 
@@ -156,19 +156,19 @@ export default function VideoPlayer({
               <div className="flex items-center gap-4">
                 <button
                   onClick={togglePlay}
-                  className="p-1 hover:text-[#E0E0E0] transition"
+                  className="p-1 hover:text-accent-custom transition"
                   id="play-pause-toggle-btn"
                 >
                   {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 fill-white text-white" />}
                 </button>
 
                 <div className="flex items-center gap-2">
-                  <button onClick={toggleMute} className="p-1 hover:text-[#E0E0E0] transition" id="mute-toggle-btn">
+                  <button onClick={toggleMute} className="p-1 hover:text-accent-custom transition" id="mute-toggle-btn">
                     {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
                   </button>
                 </div>
 
-                <div className="text-[10px] font-mono text-white/40">
+                <div className="text-[10px] font-mono text-white/50">
                   {Math.floor(currentTime / 60)}:{String(Math.floor(currentTime % 60)).padStart(2, "0")}
                   <span className="mx-1">/</span>
                   {Math.floor(duration / 60)}:{String(Math.floor(duration % 60)).padStart(2, "0")}
@@ -176,9 +176,9 @@ export default function VideoPlayer({
               </div>
 
               {/* Taglet to state it's high quality mobile capture */}
-              <div className="hidden sm:flex items-center gap-1.5 rounded-sm bg-white/5 px-2.5 py-0.5 border border-white/10">
-                <span className="h-1.5 w-1.5 rounded-full bg-white/50" />
-                <span className="text-[9px] font-mono text-white/40 tracking-wider font-semibold">12-PRO SOURCE</span>
+              <div className="hidden sm:flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 border border-white/15">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent-custom animate-pulse" />
+                <span className="text-[9px] font-mono text-white/60 tracking-wider font-bold">12-PRO SOURCE</span>
               </div>
             </div>
           </div>

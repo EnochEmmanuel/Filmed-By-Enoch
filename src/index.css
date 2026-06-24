@@ -6,10 +6,58 @@
   --font-display: 'Space Grotesk', sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-mono: 'JetBrains Mono', monospace;
+
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-card: var(--bg-card);
+  --color-bg-card-hover: var(--bg-card-hover);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-dim: var(--text-dim);
+  --color-border-custom: var(--border-color);
+  --color-border-strong: var(--border-strong);
+  --color-accent-custom: var(--accent-color);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-foreground);
+}
+
+:root {
+  --bg-primary: #f8f9fa;
+  --bg-secondary: #f1f3f5;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f3f5;
+  --text-primary: #121214;
+  --text-secondary: #495057;
+  --text-muted: #868e96;
+  --text-dim: #adb5bd;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.15);
+  --accent-color: #121214;
+  --accent-hover: #212529;
+  --accent-foreground: #ffffff;
+}
+
+.dark {
+  --bg-primary: #08080a;
+  --bg-secondary: #0e0e11;
+  --bg-card: #141418;
+  --bg-card-hover: #1c1c22;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-dim: #475569;
+  --border-color: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --accent-color: #ffffff;
+  --accent-hover: #f1f5f9;
+  --accent-foreground: #08080a;
 }
 
 body {
-  background-color: #050505;
-  color: #F5F5F5;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 

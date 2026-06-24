@@ -18,37 +18,37 @@ export default function Gallery({ onPlayVideo }: GalleryProps) {
   });
 
   return (
-    <section className="bg-[#050505] px-6 py-24 text-[#F5F5F5] border-t border-b border-white/5 font-sans" id="gallery-section">
-      <div className="mx-auto max-w-7xl">
+    <section className="bg-bg-primary px-6 py-24 text-text-primary border-t border-b border-border-custom font-sans transition-colors duration-300" id="gallery-section">
+      <div className="mx-auto max-w-5xl">
         {/* Headlights element */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="flex flex-col">
-            <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-white/40 font-bold mb-2">
+            <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-text-muted font-bold mb-2">
               01 / MOTION FEED
             </span>
-            <h2 className="text-3xl md:text-5xl font-light tracking-tight text-white uppercase leading-none">
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-text-primary uppercase leading-none font-display">
               DYNAMIC MEDIA <br />
-              <span className="italic font-serif text-white/40">GALLERY</span>
+              <span className="italic font-serif font-normal text-text-muted">GALLERY</span>
             </h2>
-            <p className="text-xs text-white/30 font-mono mt-3 max-w-md uppercase tracking-wide">
+            <p className="text-xs text-text-muted font-mono mt-3 max-w-md uppercase tracking-wide">
               Muted live playback on mouse hover. Tap or click to reveal high-fidelity audio streams.
             </p>
           </div>
 
-          {/* Clean Segmented Control / Filter buttons */}
-          <div className="flex flex-wrap items-center gap-1 bg-[#111] border border-white/5 p-1 rounded-sm" id="gallery-filters">
+          {/* Clean Segmented Control / Filter buttons (Gen Z High Contrast Pill) */}
+          <div className="flex flex-wrap items-center gap-1.5 bg-bg-secondary border border-border-custom p-1.5 rounded-full" id="gallery-filters">
             {(["all", "pov", "lifestyle", "event"] as const).map((filter) => (
               <button
                 key={filter}
                 onClick={() => setSelectedFilter(filter)}
-                className={`px-4 py-2 text-[10px] font-mono tracking-widest uppercase transition-all rounded-sm cursor-pointer ${
+                className={`px-4 py-2 text-[10px] font-bold tracking-wider uppercase transition-all rounded-full cursor-pointer ${
                   selectedFilter === filter
-                    ? "bg-white/10 text-white font-medium border border-white/10"
-                    : "text-white/40 hover:text-white border border-transparent"
+                    ? "bg-accent-custom text-accent-fg shadow-sm"
+                    : "text-text-secondary hover:text-text-primary hover:bg-bg-primary"
                 }`}
                 id={`filter-${filter}`}
               >
-                {filter === "all" ? "SHOW ALL" : filter === "pov" ? "POV PRODUCTION" : filter === "lifestyle" ? "LIFESTYLE" : "CINEMATIC EVENTS"}
+                {filter === "all" ? "SHOW ALL" : filter === "pov" ? "POV" : filter === "lifestyle" ? "LIFESTYLE" : "EVENTS"}
               </button>
             ))}
           </div>
@@ -57,7 +57,7 @@ export default function Gallery({ onPlayVideo }: GalleryProps) {
         {/* Dynamic Gallery Grid (Portrait / Landscape mixed elegant layout) */}
         <motion.div
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           id="gallery-grid"
         >
           <AnimatePresence mode="popLayout">
@@ -66,21 +66,21 @@ export default function Gallery({ onPlayVideo }: GalleryProps) {
 
               return (
                 <motion.div
-                  key={work.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.4 }}
-                  onMouseEnter={() => setHoveredId(work.id)}
-                  onMouseLeave={() => setHoveredId(null)}
-                  onClick={() => onPlayVideo(work.videoUrl, work.title, work.aspectRatio)}
-                  className={`relative overflow-hidden rounded-sm bg-[#111] border border-white/5 group shadow-lg cursor-pointer transform transition-transform hover:border-white/20 hover:shadow-2xl ${
-                    work.aspectRatio === "portrait"
-                      ? "aspect-[9/16] lg:col-span-1"
-                      : "aspect-video sm:col-span-2 lg:col-span-2"
-                  }`}
-                  id={`work-card-${work.id}`}
+                   key={work.id}
+                   layout
+                   initial={{ opacity: 0, scale: 0.98 }}
+                   animate={{ opacity: 1, scale: 1 }}
+                   exit={{ opacity: 0, scale: 0.98 }}
+                   transition={{ duration: 0.4 }}
+                   onMouseEnter={() => setHoveredId(work.id)}
+                   onMouseLeave={() => setHoveredId(null)}
+                   onClick={() => onPlayVideo(work.videoUrl, work.title, work.aspectRatio)}
+                   className={`relative overflow-hidden rounded-2xl bg-bg-card border border-border-custom group shadow-md cursor-pointer transform transition-all hover:border-text-primary/20 hover:shadow-xl ${
+                     work.aspectRatio === "portrait"
+                       ? "aspect-[9/16] lg:col-span-1"
+                       : "aspect-video sm:col-span-2 lg:col-span-2"
+                   }`}
+                   id={`work-card-${work.id}`}
                 >
                   {/* Underlay Image */}
                   <img
@@ -98,7 +98,7 @@ export default function Gallery({ onPlayVideo }: GalleryProps) {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="absolute inset-0 z-10 w-full h-full bg-[#050505]"
+                        className="absolute inset-0 z-10 w-full h-full bg-bg-primary"
                       >
                         <video
                           src={work.videoUrl}
@@ -113,15 +113,15 @@ export default function Gallery({ onPlayVideo }: GalleryProps) {
                   </AnimatePresence>
 
                   {/* Aesthetic Shadow Vignette Grade */}
-                  <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/90 via-black/30 to-black/40 pointer-events-none" />
+                  <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/85 via-black/20 to-black/30 pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity" />
 
                   {/* Top floating metadata */}
                   <div className="absolute top-4 left-4 right-4 z-30 flex items-center justify-between pointer-events-none">
-                    <span className="rounded-sm bg-black/80 border border-white/5 px-2.5 py-1 text-[9px] font-mono tracking-widest text-white/50 font-semibold uppercase">
+                    <span className="rounded-full bg-black/85 border border-white/10 px-3 py-1 text-[9px] font-bold tracking-widest text-white/70 uppercase">
                       {work.category}
                     </span>
-                    <span className="flex items-center gap-1 bg-white/10 text-white border border-white/10 px-2 py-0.5 rounded-sm text-[9px] font-mono tracking-widest font-bold">
-                      <Eye className="h-3 w-3 text-white/60" />
+                    <span className="flex items-center gap-1.5 bg-accent-custom text-accent-fg px-3 py-1 rounded-full text-[9px] font-bold tracking-widest uppercase">
+                      <Eye className="h-3 w-3" />
                       {work.stats}
                     </span>
                   </div>
@@ -137,15 +137,15 @@ export default function Gallery({ onPlayVideo }: GalleryProps) {
                   </div>
 
                   {/* Bottom details */}
-                  <div className="absolute bottom-4 left-4 right-4 z-30 flex flex-col pointer-events-none gap-1 bg-black/40 backdrop-blur-sm p-3 rounded-sm border border-white/5">
-                    <div className="flex items-center justify-between text-white/40 font-mono text-[9px]">
-                      <span>FORMAT: MOV 4K</span>
+                  <div className="absolute bottom-4 left-4 right-4 z-30 flex flex-col pointer-events-none gap-1 bg-black/75 backdrop-blur-sm p-4 rounded-xl border border-white/10">
+                    <div className="flex items-center justify-between text-white/50 font-mono text-[9px] font-bold tracking-wider">
+                      <span>FORMAT: 4K UHD</span>
                       <span className="flex items-center gap-1">
-                        <Clock className="h-2.5 w-2.5 text-white/40" />
+                        <Clock className="h-2.5 w-2.5" />
                         {work.duration}
                       </span>
                     </div>
-                    <h3 className="text-xs sm:text-sm font-medium tracking-wide text-[#F5F5F5] group-hover:text-white transition-colors uppercase line-clamp-1">
+                    <h3 className="text-xs sm:text-sm font-bold tracking-wide text-white transition-colors uppercase line-clamp-1 font-display">
                       {work.title}
                     </h3>
                   </div>
