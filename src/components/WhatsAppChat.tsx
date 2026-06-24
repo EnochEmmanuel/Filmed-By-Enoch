@@ -82,11 +82,11 @@ export default function WhatsAppChat() {
                     className="h-10 w-10 rounded-full object-cover border border-border-custom"
                     referrerPolicy="no-referrer"
                   />
-                  <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-accent-custom ring-2 ring-bg-secondary animate-pulse" />
+                  <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-[#25D366] ring-2 ring-bg-secondary animate-pulse" />
                 </div>
                 <div>
                   <h5 className="text-xs font-black text-text-primary tracking-wide">Enoch</h5>
-                  <p className="text-[9px] text-text-muted font-mono tracking-widest font-bold">FILMED BY ENOCH • ONLINE</p>
+                  <p className="text-[9px] text-[#25D366] font-mono tracking-widest font-bold">FILMED BY ENOCH • ONLINE</p>
                 </div>
               </div>
               <button
@@ -136,7 +136,7 @@ export default function WhatsAppChat() {
               />
               <button
                 onClick={handleSend}
-                className="bg-accent-custom hover:bg-accent-hover text-accent-fg rounded-xl p-2.5 transition cursor-pointer flex-shrink-0"
+                className="bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-xl p-2.5 transition cursor-pointer flex-shrink-0"
                 id="whatsapp-send-btn"
               >
                 <Send className="h-3.5 w-3.5" />
@@ -165,11 +165,17 @@ export default function WhatsAppChat() {
             setIsOpen(!isOpen);
             setShowNotification(false);
           }}
-          className="bg-accent-custom text-accent-fg hover:bg-accent-hover rounded-full p-4 shadow-2xl transition hover:rotate-2 border border-border-strong hover:scale-[1.05] active:scale-95 cursor-pointer z-50 relative"
+          className="bg-[#25D366] text-white hover:bg-[#20ba5a] rounded-full p-4 shadow-2xl transition hover:rotate-2 border border-[#20ba5a]/20 hover:scale-[1.05] active:scale-95 cursor-pointer z-50 relative flex items-center justify-center"
           aria-label="Contact Enoch on WhatsApp"
           id="whatsapp-launcher-bubble"
         >
-          <MessageSquare className="h-5 w-5 stroke-[2]" />
+          <svg
+            viewBox="0 0 24 24"
+            className="h-5 w-5 fill-current"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.63-1.023-5.101-2.883-6.963C16.58 1.916 14.105.891 11.474.891 6.038.891 1.612 5.316 1.61 10.753c-.001 1.701.447 3.361 1.298 4.848l-.995 3.637 3.734-.979zm11.387-5.463c-.31-.156-1.834-.905-2.119-1.01-.285-.104-.493-.156-.7.156-.207.312-.802 1.01-.983 1.218-.18.208-.362.234-.672.079-.312-.156-1.318-.486-2.51-1.549-.928-.827-1.554-1.85-1.737-2.162-.18-.312-.02-.48.137-.635.141-.14.312-.364.467-.546.156-.182.208-.312.312-.52.104-.208.052-.39-.026-.546-.078-.156-.7-1.688-.959-2.311-.252-.61-.51-.527-.7-.53l-.6-.007c-.207 0-.546.078-.832.39-.286.312-1.092 1.067-1.092 2.602 0 1.536 1.118 3.018 1.274 3.226.156.208 2.199 3.359 5.328 4.709.744.32 1.325.512 1.777.656.748.238 1.43.204 1.969.124.6-.09 1.834-.75 2.093-1.438.259-.688.259-1.276.182-1.4-.078-.125-.286-.203-.597-.36z" />
+          </svg>
         </button>
       </div>
     </div>

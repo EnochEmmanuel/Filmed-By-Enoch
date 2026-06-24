@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Mail, Film, Laptop, Camera, Layers, Instagram, Disc, Sun, Moon } from "lucide-react";
+import { Mail, Film, Laptop, Camera, Layers, Instagram, Disc, Sun, Moon, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import Hero from "./components/Hero";
 import Gallery from "./components/Gallery";
@@ -15,6 +15,7 @@ export default function App() {
     const stored = localStorage.getItem("theme");
     return stored ? stored === "dark" : true;
   });
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -64,7 +65,7 @@ export default function App() {
       {/* Dynamic Header Overlay (Floating Gen Z Glass Pill) */}
       <header className="fixed top-4 left-1/2 -translate-x-1/2 z-40 flex items-center justify-between w-[92%] max-w-5xl px-5 py-3 rounded-full bg-bg-card/75 backdrop-blur-md border border-border-custom shadow-lg transition-all">
         {/* Logo Mark */}
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleScrollToElement("site-hero")}>
+        <div className="flex items-center gap-2 cursor-pointer" onClick={() => { handleScrollToElement("site-hero"); setIsMobileMenuOpen(false); }}>
           <Disc className="h-4 w-4 text-accent-custom animate-[spin_12s_linear_infinite]" />
           <span className="text-[11px] font-bold tracking-widest text-text-primary uppercase font-mono">
             ENOCH<span className="text-text-muted font-normal lowercase tracking-normal font-serif">.film</span>
@@ -116,15 +117,97 @@ export default function App() {
             {isDarkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
 
-          {/* Book Shoot Button */}
+          {/* Book Shoot Button (hidden on tiny mobile, visible sm+) */}
           <button
             onClick={() => handleScrollToElement("booking-section")}
-            className="rounded-full bg-accent-custom text-accent-fg px-4 py-2 text-[10px] font-bold tracking-wider hover:bg-accent-hover transition-all cursor-pointer shadow-sm uppercase font-display"
+            className="hidden sm:inline-block rounded-full bg-accent-custom text-accent-fg px-4 py-2 text-[10px] font-bold tracking-wider hover:bg-accent-hover transition-all cursor-pointer shadow-sm uppercase font-display"
           >
             Book Shoot
           </button>
+
+          {/* Hamburger Menu Toggle Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2 rounded-full hover:bg-bg-secondary transition-all cursor-pointer border border-border-custom flex md:hidden items-center justify-center text-text-secondary hover:text-text-primary"
+            aria-label="Toggle Mobile Menu"
+          >
+            {isMobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </button>
         </div>
       </header>
+
+      {/* Elegant Dropdown Drawer for Mobile Navigation */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -15, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -15, scale: 0.98 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed top-20 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-5xl p-6 rounded-2xl bg-bg-card/95 backdrop-blur-xl border border-border-custom shadow-2xl flex flex-col gap-5 md:hidden"
+          >
+            <div className="flex flex-col gap-3 font-mono text-[10px] tracking-widest text-text-muted uppercase font-bold border-b border-border-custom/40 pb-2">
+              NAVIGATE SECTIONS
+            </div>
+            <nav className="flex flex-col gap-4 text-xs font-mono tracking-wider uppercase text-text-secondary">
+              <button
+                onClick={() => {
+                  handleScrollToElement("gallery-section");
+                  setIsMobileMenuOpen(false);
+                }}
+                className="hover:text-text-primary text-left py-2 border-b border-border-custom/30 transition-colors"
+              >
+                Feed
+              </button>
+              <button
+                onClick={() => {
+                  handleScrollToElement("projects-section-anchor");
+                  setIsMobileMenuOpen(false);
+                }}
+                className="hover:text-text-primary text-left py-2 border-b border-border-custom/30 transition-colors"
+              >
+                Campaigns
+              </button>
+              <button
+                onClick={() => {
+                  handleScrollToElement("booking-section");
+                  setIsMobileMenuOpen(false);
+                }}
+                className="hover:text-text-primary text-left py-2 border-b border-border-custom/30 transition-colors"
+              >
+                Estimates
+              </button>
+              <button
+                onClick={() => {
+                  handleScrollToElement("blog-section");
+                  setIsMobileMenuOpen(false);
+                }}
+                className="hover:text-text-primary text-left py-2 border-b border-border-custom/30 transition-colors"
+              >
+                Insights
+              </button>
+              <button
+                onClick={() => {
+                  handleScrollToElement("testimonials-section");
+                  setIsMobileMenuOpen(false);
+                }}
+                className="hover:text-text-primary text-left py-2 border-b border-border-custom/30 transition-colors"
+              >
+                Reviews
+              </button>
+            </nav>
+            <button
+              onClick={() => {
+                handleScrollToElement("booking-section");
+                setIsMobileMenuOpen(false);
+              }}
+              className="w-full text-center rounded-full bg-accent-custom text-accent-fg py-3 text-xs font-bold tracking-wider hover:bg-accent-hover transition-all cursor-pointer shadow-md uppercase font-display"
+            >
+              Book Shoot Now
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* 1. Immersive Hero Background */}
       <Hero
