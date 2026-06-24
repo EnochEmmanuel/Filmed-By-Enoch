@@ -1,0 +1,6 @@
+{
+  "name": "Filmed by Enoch",
+  "description": "Portfolio of Enoch, a premium mobile videographer and innovative digital media creator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
