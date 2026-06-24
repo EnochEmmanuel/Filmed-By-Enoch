@@ -22,6 +22,12 @@ export default function Hero({ onPlayShowreel, onNavigateToProjects, onNavigateT
           className="h-full w-full object-cover opacity-[0.12] dark:opacity-20 scale-[1.02] filter blur-[0.2px] transition-opacity"
           src={masterShowreelUrl}
         />
+        
+        {/* Cinematic Prism Lens Flare Light Leak Sweep (flows from left to right once in a while) */}
+        <div className="absolute inset-0 select-none pointer-events-none overflow-hidden mix-blend-screen opacity-25 dark:opacity-45">
+          <div className="absolute inset-y-0 w-[80%] bg-gradient-to-r from-transparent via-cyan-500/15 via-blue-500/10 via-amber-500/20 via-pink-500/10 to-transparent blur-3xl animate-film-flare" />
+        </div>
+
         {/* Cinematic shadows and gradients overlay (Vignette) */}
         <div className="absolute inset-0 bg-radial-[circle_at_center,transparent_20%,var(--bg-primary)_100%]" />
         <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-bg-primary/70" />

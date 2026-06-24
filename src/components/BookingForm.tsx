@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 export default function BookingForm() {
   const [projectType, setProjectType] = useState<"pov" | "lifestyle" | "event">("pov");
   const [reelCount, setReelCount] = useState<number>(3);
-  const [useIllustratorOverlay, setUseIllustratorOverlay] = useState<boolean>(true);
+  const [useIllustratorOverlay, setUseIllustratorOverlay] = useState<boolean>(false);
   const [useDroneTrack, setUseDroneTrack] = useState<boolean>(false);
   const [priorityDelivery, setPriorityDelivery] = useState<boolean>(false);
   

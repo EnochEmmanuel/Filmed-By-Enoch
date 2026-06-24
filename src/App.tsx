@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "motion/react";
 import Hero from "./components/Hero";
 import Gallery from "./components/Gallery";
 import Projects from "./components/Projects";
-import Toolkit from "./components/Toolkit";
 import BookingForm from "./components/BookingForm";
 import Blog from "./components/Blog";
 import Testimonials from "./components/Testimonials";
@@ -60,18 +59,14 @@ export default function App() {
     }
   };
 
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
   return (
-    <div className={`min-h-screen ${isDarkMode ? "dark bg-bg-primary text-text-primary" : "bg-bg-primary text-text-primary"} font-sans overflow-x-hidden selection:bg-accent-custom selection:text-accent-fg transition-colors duration-300`}>
+    <div className={`min-h-screen bg-bg-primary text-text-primary font-sans overflow-x-hidden selection:bg-accent-custom selection:text-accent-fg transition-colors duration-300`}>
       {/* Dynamic Header Overlay (Floating Gen Z Glass Pill) */}
       <header className="fixed top-4 left-1/2 -translate-x-1/2 z-40 flex items-center justify-between w-[92%] max-w-5xl px-5 py-3 rounded-full bg-bg-card/75 backdrop-blur-md border border-border-custom shadow-lg transition-all">
         {/* Logo Mark */}
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleScrollToElement("site-hero")}>
           <Disc className="h-4 w-4 text-accent-custom animate-[spin_12s_linear_infinite]" />
-          <span className="text-[11px] font-bold tracking-widest text-text-primary uppercase font-display">
+          <span className="text-[11px] font-bold tracking-widest text-text-primary uppercase font-mono">
             ENOCH<span className="text-text-muted font-normal lowercase tracking-normal font-serif">.film</span>
           </span>
         </div>
@@ -89,12 +84,6 @@ export default function App() {
             className="hover:text-text-primary transition cursor-pointer"
           >
             Campaigns
-          </button>
-          <button
-            onClick={() => handleScrollToElement("toolkit-section")}
-            className="hover:text-text-primary transition cursor-pointer"
-          >
-            Toolkit
           </button>
           <button
             onClick={() => handleScrollToElement("booking-section")}
@@ -120,7 +109,7 @@ export default function App() {
         <div className="flex items-center gap-2">
           {/* Theme Toggle Button */}
           <button
-            onClick={toggleTheme}
+            onClick={() => setIsDarkMode(!isDarkMode)}
             className="p-2 rounded-full hover:bg-bg-secondary transition-all cursor-pointer border border-border-custom flex items-center justify-center text-text-secondary hover:text-text-primary"
             aria-label="Toggle Theme"
           >
@@ -150,9 +139,6 @@ export default function App() {
       {/* 3. Deep-Dive Strategy Projects Section */}
       <Projects onPlayVideo={handleOpenPlayer} />
 
-      {/* 4. Agile Toolkit Spec Grids */}
-      <Toolkit />
-
       {/* 5. Campaign Cost Estimator */}
       <BookingForm />
 
@@ -168,8 +154,8 @@ export default function App() {
           
           <div className="flex flex-col gap-4 md:max-w-md">
             <div className="flex items-center gap-2 justify-center md:justify-start">
-              <Disc className="h-4 w-4 text-text-muted" />
-              <span className="text-xs font-bold tracking-[0.25em] text-text-primary uppercase font-display">
+              <Disc className="h-4 w-4 text-accent-custom" />
+              <span className="text-xs font-bold tracking-[0.25em] text-text-primary uppercase font-mono">
                 FILMED BY ENOCH
               </span>
             </div>
